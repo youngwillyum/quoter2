@@ -1,13 +1,13 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 
-function About(){
+function Profile(){
   return(
     <React.Fragment>
-    <div>About</div>
+    <div>Profile</div>
     <Link to='/home'>Click here for home</Link>
     </React.Fragment>
 )
 }
 
-export default About;
+export default Profile;
