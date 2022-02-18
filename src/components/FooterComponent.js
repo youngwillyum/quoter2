@@ -2,7 +2,7 @@ import React from 'react'
 
 function Footer(){
   return(
-    <div>Footer Component</div>
+    <div>*footercomponent* QuoteZilla *footercomponent*</div>
   )
 }
 
