@@ -10,6 +10,9 @@ function Login(){
     <div/>
     <input type="password" placeholder="Your Password" />
     <div/>
+    <input type="submit" value="Login"/>
+    <input type="submit" value="Register" />
+    <div/>
     <Link to='/home'>Click here for home</Link>
 
     </React.Fragment>
