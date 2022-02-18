@@ -6,6 +6,7 @@ import Home from './HomeComponent'
 import Profile from './ProfileComponent'
 import Login from './LoginComponent'
 import Quoter from './QuoterComponent'
+import History from './HistoryComponent'
 
 import{Switch,Route, Redirect, withRouter} from 'react-router-dom'
 
@@ -19,6 +20,7 @@ function Main(){
         <Route path= '/profile' component={Profile}/>
         <Route path= '/login' component={Login}/>
         <Route path= '/quoter' component={Quoter}/>
+        <Route path= '/history' component={History}/>
         <Redirect to='/home'/>
       </Switch>
     <Footer/>

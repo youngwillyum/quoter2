@@ -10,6 +10,8 @@ function Home(){
     <Link to='/profile'> Click here for Profile </Link>
     <div/>
     <Link to='/quoter'> Click here to request quote! </Link>
+    <div/>
+    <Link to='/history'> Click here to see quote history </Link>
     </React.Fragment>
   )
 }
