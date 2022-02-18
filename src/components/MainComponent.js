@@ -14,15 +14,13 @@ function Main(){
   return(
     <React.Fragment>
     <Header/>
-    <Switch>
-    <Route path= '/home' component={Home}/>
-    <Route path= '/profile' component={Profile}/>
-    <Route path= '/login' component={Login}/>
-    <Route path= '/quoter' component={Quoter}/>
-    <Redirect to='/home'/>
-    </Switch>
-
-
+      <Switch>
+        <Route path= '/home' component={Home}/>
+        <Route path= '/profile' component={Profile}/>
+        <Route path= '/login' component={Login}/>
+        <Route path= '/quoter' component={Quoter}/>
+        <Redirect to='/home'/>
+      </Switch>
     <Footer/>
     </React.Fragment>
   )
