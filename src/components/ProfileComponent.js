@@ -9,28 +9,29 @@ function Profile(){
 
   <label>
     Full Name:
-    <input type="text" name="name" />
+    <input type="text" name="name" maxlength="50" required />
   </label>
 
   <label>
     Address 1:
-    <input type="text" address="address" />
+    <input type="text" address="address" maxlength="100" required/>
   </label>
 
   <label>
     Address 2:
-    <input type="text" address2="address2" />
+    <input type="text" address2="address2" maxlength="100" />
   </label>
   <div/>
 
   <label>
     City:
-    <input type="text" City="City" />
+    <input type="text" City="City" maxlength="100" required/>
   </label>
 
   <label>
   State:
-  <select>
+  <select name="State" id="state" required>
+  <option value="">None</option>
 	<option value="AL">Alabama</option>
 	<option value="AK">Alaska</option>
 	<option value="AZ">Arizona</option>
@@ -87,7 +88,7 @@ function Profile(){
 
   <label>
     Zipcode:
-    <input type="text" zipcode="zipcode" />
+    <input type="text" zipcode="zipcode" maxlength="9" minlength="5" required/>
   </label>
 
   <input type="submit" value="Submit" />
