@@ -9,28 +9,29 @@ function Quoter(){
     <form>
 
       <label>
-        Gallons Requested
-        <input type="text" name="gallons" />
+        Gallons Requested: 
+        <input type="number" name="gallons" required/>
       </label>
       <div/>
 
       <label>
-        Delivery address - generated from client Profile
+        Delivery address: 
       </label>
       <div/>
 
       <label>
-        Delivery Date - date picker
+        Delivery Date: 
+        <input type="date"/>
       </label>
       <div/>
 
       <label>
-        Suggested price placeholder
+        Suggested price / gallon: 
       </label>
       <div/>
 
       <label>
-        Total amount due:
+        Total amount due: 
       </label>
       <div/>
 
