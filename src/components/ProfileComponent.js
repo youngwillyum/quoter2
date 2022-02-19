@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 function Profile(){
   return(
     <React.Fragment>
-    <h2 style={{textAlign: "center"}}>Profile</h2>
+    <h2>Profile</h2>
 <form>
 
   <label>

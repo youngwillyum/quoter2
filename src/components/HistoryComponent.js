@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 function History(){
     return(
         <React.Fragment>
-        <h2 style={{textAlign: "center"}}>Quote History</h2>
+        <h2>Quote History</h2>
 
         <table>
             <tr>
