@@ -1,8 +1,11 @@
 import React from 'react'
+import './myStyles.css'
+
+
 
 function Header(){
   return(
-    <div>*headercomponent* QuoteZilla *headercomponent</div>
+    <h1 className='heading'> QuoteZilla </h1>
   )
 }
 

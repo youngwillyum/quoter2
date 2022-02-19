@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 function Profile(){
   return(
     <React.Fragment>
-    <div>Profile</div>
+    <h2 style={{textAlign: "center"}}>Profile</h2>
 <form>
 
   <label>
@@ -91,7 +91,7 @@ function Profile(){
     <input type="text" zipcode="zipcode" maxlength="9" minlength="5" required/>
   </label>
 
-  <input type="submit" value="Submit" />
+  <input type="submit" value="Save Profile" />
 </form>
     <Link to='/home'>Click here for home</Link>
     </React.Fragment>

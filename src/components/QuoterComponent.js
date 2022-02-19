@@ -4,34 +4,34 @@ import {Link} from 'react-router-dom'
 function Quoter(){
   return(
     <React.Fragment>
-    <div>Quoter</div>
+    <h2 style={{textAlign: "center"}}>Quoter</h2>
 
     <form>
 
       <label>
-        Gallons Requested: 
+        Gallons Requested:
         <input type="number" name="gallons" required/>
       </label>
       <div/>
 
       <label>
-        Delivery address: 
+        Delivery address:
       </label>
       <div/>
 
       <label>
-        Delivery Date: 
+        Delivery Date:
         <input type="date"/>
       </label>
       <div/>
 
       <label>
-        Suggested price / gallon: 
+        Suggested price / gallon:
       </label>
       <div/>
 
       <label>
-        Total amount due: 
+        Total amount due:
       </label>
       <div/>
 

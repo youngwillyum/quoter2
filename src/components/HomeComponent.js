@@ -1,17 +1,25 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import './myStyles.css'
 
 function Home(){
   return(
     <React.Fragment>
-    <div>Home</div>
-    <Link to='/login'> Click here to Login or Register </Link>
+    <form action="/login">
+      <input type="submit" value="Login or Register" />
+    </form>
     <div/>
-    <Link to='/profile'> Click here for Profile </Link>
+    <form action="/profile">
+      <input type="submit" value="View Profile" />
+    </form>
     <div/>
-    <Link to='/quoter'> Click here to request quote! </Link>
+    <form action="/quoter">
+      <input type="submit" value="Request Quote" />
+    </form>
     <div/>
-    <Link to='/history'> Click here to see quote history </Link>
+    <form action="/history">
+      <input type="submit" value="Quote History" />
+    </form>
     </React.Fragment>
   )
 }
