@@ -8,7 +8,6 @@ class App extends Component {
     return (
       <Router>
         <div className="container">
-          <h2>MERN-Stack App</h2>
           <Main/>
         </div>
       </Router>
