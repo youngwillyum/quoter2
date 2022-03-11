@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 
-function Profile(){
+export default class Profile extends Component{
+render(){
   return(
     <React.Fragment>
     <h2>Profile</h2>
@@ -97,5 +98,4 @@ function Profile(){
     </React.Fragment>
 )
 }
-
-export default Profile;
+}

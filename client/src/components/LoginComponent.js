@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 
-function Login(){
+export default class Login extends Component{
+render () {
   return(
     <React.Fragment>
     <div>Login or Register</div>
@@ -17,6 +18,5 @@ function Login(){
 
     </React.Fragment>
   )
+  }
 }
-
-export default Login;

@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 import './myStyles.css'
 
-function Home(){
+export default class  Home extends Component{
+  render(){
   return(
     <React.Fragment>
     <form action="/login">
@@ -22,6 +23,5 @@ function Home(){
     </form>
     </React.Fragment>
   )
+  }
 }
-
-export default Home;

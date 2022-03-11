@@ -1,12 +1,12 @@
-import React from 'react'
+import React, { Component } from 'react'
 import './myStyles.css'
 
 
 
-function Header(){
+export default class Header extends Component{
+  render() {
   return(
     <h1 className='heading'> QuoteZilla </h1>
   )
+ }
 }
-
-export default Header;

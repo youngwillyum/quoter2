@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 
-function History(){
+export default class History extends Component{
+  render() {
     return(
         <React.Fragment>
         <h2>Quote History</h2>
@@ -27,6 +28,5 @@ function History(){
 
         </React.Fragment>
     )
+  }
 }
-
-export default History;
