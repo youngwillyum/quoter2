@@ -7,7 +7,7 @@ import Profile from './ProfileComponent'
 import Login from './LoginComponent'
 import Quoter from './QuoterComponent'
 import History from './HistoryComponent'
-
+import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import logo from "./logo.png";
 
@@ -18,7 +18,7 @@ export default class Main extends Component{
         <div className="container">
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" target="_blank">
-              <img src={logo} alt="projectlogo"  width="30" height="30"  />
+              <img src={logo} alt="/home"  width="50" height="50"  />
             </a>
             <Link to="/" className="navbar-brand">Quoter App</Link>
             <div className="collpase navbar-collapse">
