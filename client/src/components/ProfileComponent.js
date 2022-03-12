@@ -6,6 +6,14 @@ export default class Profile extends Component{
 constructor(props) {
   super(props);
 
+  this.onChangeProfileName = this.onChangeProfileName.bind(this)
+  this.onChangeProfileAddress1 = this.onChangeProfileAddress1.bind(this)
+  this.onChangeProfileAddress2 = this.onChangeProfileAddress2.bind(this)
+  this.onChangeProfileCity = this.onChangeProfileCity.bind(this)
+  this.onChangeProfileState = this.onChangeProfileState.bind(this)
+  this.onChangeProfileZipcode = this.onChangeProfileZipcode.bind(this)
+  this.onSubmit = this.onSubmit.bind(this)
+
   this.state = {
     profile_fullname:'',
     profile_address1:'',
@@ -14,15 +22,6 @@ constructor(props) {
     profile_state:'',
     profile_zipcode:''
   }
-
-  this.onChangeProfileName = this.onChangeProfileName.bind(this)
-  this.onChangeProfileAddress1 = this.onChangeProfileAddress1.bind(this)
-  this.onChangeProfileAddress2 = this.onChangeProfileAddress2.bind(this)
-  this.onChangeProfileCity = this.onChangeProfileCity.bind(this)
-  this.onChangeProfileState = this.onChangeProfileState.bind(this)
-  this.onChangeProfileZipcode = this.onChangeProfileZipcode.bind(this)
-
-
 }
 
 onChangeProfileName(e){
@@ -66,13 +65,13 @@ onSubmit(e) {
 
   console.log('--Form Submitted--');
   console.log(this.state.profile_fullname);
-  console.log('Profile Address1: ${this.state.profile_address1}');
-  console.log('Profile Address2: ${this.state.profile_address2}');
-  console.log('Profile City: ${this.state.profile_city}');
-  console.log('Profile State: ${this.state.profile_state}');
-  console.log('Profile Zipcode: ${this.state.profile_zipcode}');
+  console.log(this.state.profile_address1);
+  console.log(this.state.profile_address2);
+  console.log(this.state.profile_city);
+  console.log(this.state.profile_state);
+  console.log(this.state.profile_zipcode);
 
-  this.state = ({
+  this.setState = ({
     profile_fullname:'',
     profile_address1:'',
     profile_address2:'',
