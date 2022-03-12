@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
-import Header from './HeaderComponent'
-import Footer from './FooterComponent'
+//import Header from './HeaderComponent'
+//import Footer from './FooterComponent'
 import Home from './HomeComponent'
 import Profile from './ProfileComponent'
 import Login from './LoginComponent'
@@ -18,9 +18,9 @@ export default class Main extends Component{
         <div className="container">
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" target="_blank">
-              <img src={logo} width="30" height="30" alt="CodingTheSmartWay.com" />
+              <img src={logo} alt="projectlogo"  width="30" height="30"  />
             </a>
-            <Link to="/" className="navbar-brand">MERN-Stack Quoter App</Link>
+            <Link to="/" className="navbar-brand">Quoter App</Link>
             <div className="collpase navbar-collapse">
               <ul className="navbar-nav mr-auto">
                 <li className="navbar-item">

@@ -1,49 +1,82 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 
-function Quoter(){
+export default class Quoter extends Component{
+
+constructor(props) {
+  super(props);
+  this.onChangeQuoterGallonsRequested = this.onChangeQuoterGallonsRequested.bind(this)
+  this.onChangeQuoterDeliveryDate = this.onChangeQuoterDeliveryDate.bind(this)
+  this.onSubmit = this.onSubmit.bind(this)
+
+  this.state={
+    quoter_gallonsrequested:'',
+    quoter_deliverydate:''
+  }
+}
+
+onChangeQuoterGallonsRequested(e){
+  this.setState({
+    quoter_gallonsrequested: e.target.value
+  })
+}
+
+onChangeQuoterDeliveryDate(e){
+  this.setState({
+    quoter_deliverydate: e.target.value
+  })
+}
+
+onSubmit(e) {
+  e.preventDefault();
+
+  console.log('--Form Submitted--');
+  console.log(this.state.quoter_gallonsrequested);
+  console.log(this.state.quoter_deliverydate);
+
+
+  this.setState = ({
+    quoter_gallonsrequested:'',
+    quoter_deliverydate:''
+  })
+}
+render(){
+
   return(
     <React.Fragment>
-    <h2 style={{textAlign: "center"}}>Quoter</h2>
+    <form onSubmit={this.onSubmit}>
 
-    <form>
+      <div className="form-group">
+        <label>Gallons Requested:</label>
+        <input type="number" className="form-control" name="gallons" required
+          value={this.state.quoter_gallonsrequested} onChange={this.onChangeQuoterGallonsRequested}/>
+      </div>
 
-      <label>
-        Gallons Requested:
-        <input type="number" name="gallons" required/>
-      </label>
-      <div/>
+      <div className="form-group">
+        <label>Delivery Date:</label>
+        <input type="date" className="form-control" name="date" required
+          value={this.state.quoter_deliverydate} onChange={this.onChangeQuoterDeliveryDate}/>
+      </div>
 
-      <label>
-        Delivery address:
-      </label>
-      <div/>
+      <div className="form-group">
+        <label>Delivery address:</label>
+      </div>
 
-      <label>
-        Delivery Date:
-        <input type="date"/>
-      </label>
-      <div/>
+      <div className="form-group">
+        <label>Suggested price / gallon:</label>
+      </div>
 
-      <label>
-        Suggested price / gallon:
-      </label>
-      <div/>
+      <div className="form-group">
+        <label>Total amount due:</label>
+      </div>
 
-      <label>
-        Total amount due:
-      </label>
-      <div/>
-
-      <input type="submit" value="Generate!" />
+      <div className="form-group">
+        <input type="submit" value="Generate!" className = "btn btn-primary"/>
+      </div>
 
 
     </form>
-
-
-    <Link to='/home'>Click here for home</Link>
     </React.Fragment>
 )
 }
-
-export default Quoter;
+}
