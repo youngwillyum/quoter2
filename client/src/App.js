@@ -1,14 +1,19 @@
-import React, {Component} from "react";
-import UserStore          from './stores/UserStore';
+import React, {Component,useState} from "react";
 import "bootstrap/dist/css/bootstrap.min.css"
 import Main               from './components/MainComponent'
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
+import Login from './Login/Login';
 
 
-class App extends React.Component {
+
+function App() {
+ const [token, setToken] = useState();
+  if(!token) {
+    return <Login setToken={setToken}/>
+  }
 
 
-  render(){
+
     return (
       <Router>
         <div className="app">
@@ -18,6 +23,6 @@ class App extends React.Component {
 
   );
   }
-}
+
 
 export default App;
