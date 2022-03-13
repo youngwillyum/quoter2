@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
+import axios from 'axios';
 
 export default class Quoter extends Component{
 
@@ -34,6 +35,14 @@ onSubmit(e) {
   console.log(this.state.quoter_gallonsrequested);
   console.log(this.state.quoter_deliverydate);
 
+  const newQuote = {
+    hist_date: this.state.quoter_deliverydate,
+    hist_gallons_requested: this.state.quoter_gallonsrequested,
+
+};
+
+axios.post('http://localhost:4000/historys/add', newQuote)
+    .then(res => console.log(res.data));
 
   this.setState = ({
     quoter_gallonsrequested:'',
