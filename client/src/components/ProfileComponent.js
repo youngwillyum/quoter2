@@ -82,6 +82,13 @@ onChangeProfileZipcode(e){
 }
 
 componentDidMount() {
+    const name = localStorage.getItem('name');
+    const ad1 = localStorage.getItem('ad1');
+    const ad2 = localStorage.getItem('ad2');
+    const city = localStorage.getItem('city');
+    const state = localStorage.getItem('state');
+    const zip = localStorage.getItem('zip');
+    this.setState({name, ad1, ad2, city, state, zip});
     axios.get('http://localhost:8080/profile/')
         .then(response => {
             this.setState({ profile: response.data });
@@ -118,6 +125,20 @@ onSubmit(e) {
 
 
 }
+
+  const name  = this.state.profile_fullname;
+  const ad1 = this.state.profile_address1;
+  const ad2 = this.state.profile_address;
+  const city = this.state.profile_city;
+  const state = this.state.profile_state;
+  const zip = this.state.profile_zipcode;
+  localStorage.setItem('name',name);
+  localStorage.setItem('ad1',ad1);
+  localStorage.setItem('ad2',ad2);
+  localStorage.setItem('city',city);
+  localStorage.setItem('state',state);
+  localStorage.setItem('zip',zip);
+
   this.setState = ({
     profile_fullname:'',
     profile_address1:'',
@@ -142,31 +163,31 @@ render(){
       <form onSubmit={this.onSubmit}>
 
         <div className="form-group">
-          <label>Full Name: {profile_fullname}</label>
+          <label>Full Name: {this.state.name}</label>
           <input type="text" className="form-control" maxlength="50" required value={this.state.profile_fullname}
             onChange={this.onChangeProfileName}   />
         </div>
 
         <div className="form-group">
-          <label>Address 1:</label>
+          <label>Address 1: {this.state.ad1}</label>
           <input type="text" className="form-control" value={this.state.profile_address1}
             onChange={this.onChangeProfileAddress1} maxlength="100" required/>
         </div>
 
         <div className="form-group">
-          <label>Address 2:</label>
+          <label>Address 2: {this.state.ad2}</label>
           <input type="text" className="form-control" value={this.state.profile_address2}
             onChange={this.onChangeProfileAddress2} maxlength="100" />
         </div>
 
         <div className="form-group">
-          <label>City:</label>
+          <label>City: {this.state.city}</label>
           <input type="text"className="form-control"  value={this.state.profile_city}
             onChange={this.onChangeProfileCity} maxlength="100" required/>
         </div>
 
         <div className="form-group">
-          <label>State:</label>
+          <label>State: {this.state.state}</label>
           <select name="State" className="form-control" id="state"  value ={this.state.profile_state}
           onChange={this.onChangeProfileState}required>
           <option value="">None</option>
@@ -225,7 +246,7 @@ render(){
         </div>
 
         <div className="form-group">
-          <label>Zipcode:  </label>
+          <label>Zipcode: {this.state.zip} </label>
           <input type="text" className="form-control" value={this.state.profile_zipcode}
             onChange={this.onChangeProfileZipcode} maxlength="9" minlength="5" required/>
         </div>

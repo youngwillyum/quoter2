@@ -49,6 +49,12 @@ axios.post('http://localhost:4000/historys/add', newQuote)
     quoter_deliverydate:''
   })
 }
+
+componentDidMount(){
+  const ad1 = localStorage.getItem('ad1');
+  this.setState({ad1});
+
+}
 render(){
 
   return(
@@ -68,11 +74,11 @@ render(){
       </div>
 
       <div className="form-group">
-        <label>Delivery address:</label>
+        <label>Delivery address: {this.state.ad1}</label>
       </div>
 
       <div className="form-group">
-        <label>Suggested price / gallon:</label>
+        <label>Suggested price / gallon: $2</label>
       </div>
 
       <div className="form-group">
