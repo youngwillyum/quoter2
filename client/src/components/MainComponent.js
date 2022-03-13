@@ -1,13 +1,8 @@
 import React, { Component } from 'react'
-
-//import Header from './HeaderComponent'
-//import Footer from './FooterComponent'
-//import EditProfile from './profile/editprofile'
 import Home from './HomeComponent'
-import Profile from './ProfileComponent'
-import Login from './LoginComponent'
-import Quoter from './QuoterComponent'
-import History from './HistoryComponent'
+import Profile from './Profile/ProfileComponent'
+import Quoter from './Quoter/QuoterComponent'
+import History from './Quoter/HistoryComponent'
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import logo from "./logo.png";
@@ -33,14 +28,13 @@ export default class Main extends Component{
                 <li className="navbar-item">
                   <Link to="/History" className="nav-link">History</Link>
                 </li>
-              
+
               </ul>
             </div>
           </nav>
           <br/>
 
           <Route path= '/profile' component={Profile}/>
-          <Route path= '/login' component={Login}/>
           <Route path= '/quoter' component={Quoter}/>
           <Route path= '/history' component={History}/>
         </div>
