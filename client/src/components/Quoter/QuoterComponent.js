@@ -41,7 +41,7 @@ onSubmit(e) {
 
 };
 
-axios.post('http://localhost:4000/historys/add', newQuote)
+axios.post('http://localhost:8080/historys/add', newQuote)
     .then(res => console.log(res.data));
 
   this.setState = ({
