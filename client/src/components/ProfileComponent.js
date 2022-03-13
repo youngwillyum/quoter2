@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 import * as yup from "yup"
+import axios from 'axios';
 
 export default class Profile extends Component{
 
@@ -14,6 +15,19 @@ constructor(props) {
   this.onChangeProfileState = this.onChangeProfileState.bind(this)
   this.onChangeProfileZipcode = this.onChangeProfileZipcode.bind(this)
   this.onSubmit = this.onSubmit.bind(this)
+
+  const newProfile = {
+    profile_fullname: this.profile_fullname,
+    profile_address1: this.profile_address1,
+    profile_address2: this.profile_address2,
+    profile_city: this.profile_city,
+    profile_state: this.profile_state,
+    profile_zipcode: this.profile_zipcode
+  }
+  axios.post('http://localhost:8080/profile', newProfile)
+  .then(res => console.log(res.data));
+  
+
 
   this.state = {
     profile_fullname:'',
