@@ -118,8 +118,10 @@ onSubmit(e) {
   console.log(this.state.profile_state);
   console.log(this.state.profile_zipcode);
 
+
+
   this.setState = ({
-    profile_fullname:this.state.profile_fullname,
+    profile_fullname:'',
     profile_address1:'',
     profile_address2:'',
     profile_city:'',
@@ -141,7 +143,7 @@ render(){
       <form onSubmit={this.onSubmit}>
 
         <div className="form-group">
-          <label>Full Name: {MyProfile.profile_fullname}</label>
+          <label>Full Name: {this.state.profile_fullname}</label>
           <input type="text" className="form-control" maxlength="50" required value={this.state.profile_fullname}
             onChange={this.onChangeProfileName}   />
         </div>
