@@ -3,6 +3,17 @@ import {Link} from 'react-router-dom'
 import * as yup from "yup"
 import axios from 'axios';
 
+const MyProfile = props => (
+    <tr>
+        <td>{props.profile.profile_fullname}</td>
+        <td>{props.profile.profile_address1}</td>
+        <td>{props.profile.profile_state}</td>
+        <td>
+            <Link to={"/edit/"+props.todo._id}>Edit</Link>
+        </td>
+    </tr>
+)
+
 export default class Profile extends Component{
 
 constructor(props) {
@@ -16,7 +27,7 @@ constructor(props) {
   this.onChangeProfileZipcode = this.onChangeProfileZipcode.bind(this)
   this.onSubmit = this.onSubmit.bind(this)
 
-  const newProfile = {
+    const newProfile = {
     profile_fullname: this.profile_fullname,
     profile_address1: this.profile_address1,
     profile_address2: this.profile_address2,
@@ -26,7 +37,7 @@ constructor(props) {
   }
   axios.post('http://localhost:8080/profile', newProfile)
   .then(res => console.log(res.data));
-  
+
 
 
   this.state = {
@@ -38,9 +49,9 @@ constructor(props) {
     profile_zipcode:''
   }
 
-  const validationSchema = yup.object({
+  const validationSchema = yup.object().shape({
     profile_fullname: yup.string().min(3, "Please enter your real name").required("Full name is required!"),
-    profile_address1: yup.string().email("Please enter a valid email address").required(),
+    profile_address1: yup.string().min(3, "Please enter a valid email address").required(),
   })
 }
 
@@ -80,6 +91,22 @@ onChangeProfileZipcode(e){
   });
 }
 
+componentDidMount() {
+    axios.get('http://localhost:8080/profile/')
+        .then(response => {
+            this.setState({ profile: response.data });
+        })
+        .catch(function (error){
+            console.log(error);
+        })
+}
+
+profileRead() {
+       return this.state.Profile.map(function(currentProfile, i){
+           return <MyProfile profile={currentProfile} key={i} />;
+       })
+   }
+
 onSubmit(e) {
   e.preventDefault();
 
@@ -92,7 +119,7 @@ onSubmit(e) {
   console.log(this.state.profile_zipcode);
 
   this.setState = ({
-    profile_fullname:'',
+    profile_fullname:this.state.profile_fullname,
     profile_address1:'',
     profile_address2:'',
     profile_city:'',
@@ -114,7 +141,7 @@ render(){
       <form onSubmit={this.onSubmit}>
 
         <div className="form-group">
-          <label>Full Name: {this.state.profile_fullname}</label>
+          <label>Full Name: {MyProfile.profile_fullname}</label>
           <input type="text" className="form-control" maxlength="50" required value={this.state.profile_fullname}
             onChange={this.onChangeProfileName}   />
         </div>
