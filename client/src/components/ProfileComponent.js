@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
+import * as yup from "yup"
 
 export default class Profile extends Component{
 
@@ -22,6 +23,11 @@ constructor(props) {
     profile_state:'',
     profile_zipcode:''
   }
+
+  const validationSchema = yup.object({
+    profile_fullname: yup.string().min(3, "Please enter your real name").required("Full name is required!"),
+    profile_address1: yup.string().email("Please enter a valid email address").required(),
+  })
 }
 
 onChangeProfileName(e){
@@ -94,7 +100,7 @@ render(){
       <form onSubmit={this.onSubmit}>
 
         <div className="form-group">
-          <label>Full Name:</label>
+          <label>Full Name: {this.state.profile_fullname}</label>
           <input type="text" className="form-control" maxlength="50" required value={this.state.profile_fullname}
             onChange={this.onChangeProfileName}   />
         </div>

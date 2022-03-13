@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 //import Header from './HeaderComponent'
 //import Footer from './FooterComponent'
+//import EditProfile from './profile/editprofile'
 import Home from './HomeComponent'
 import Profile from './ProfileComponent'
 import Login from './LoginComponent'
@@ -24,9 +25,6 @@ export default class Main extends Component{
             <div className="collpase navbar-collapse">
               <ul className="navbar-nav mr-auto">
                 <li className="navbar-item">
-                  <Link to="/login" className="nav-link">Login</Link>
-                </li>
-                <li className="navbar-item">
                   <Link to="/Profile" className="nav-link">Profile</Link>
                 </li>
                 <li className="navbar-item">
@@ -35,11 +33,12 @@ export default class Main extends Component{
                 <li className="navbar-item">
                   <Link to="/History" className="nav-link">History</Link>
                 </li>
+              
               </ul>
             </div>
           </nav>
           <br/>
-          <Route path= '/home' component={Home}/>
+
           <Route path= '/profile' component={Profile}/>
           <Route path= '/login' component={Login}/>
           <Route path= '/quoter' component={Quoter}/>
