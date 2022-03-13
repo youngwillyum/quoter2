@@ -5,13 +5,15 @@ const bodyParser = require('body-parser');
 const profileRoutes = express.Router();
 const PORT = 8080;
 
+let Profile = require('./profile.model');
+const profileModel = require('./profile.model');
 
 app.use(cors());
 app.use(bodyParser.json());
 app.use('/profile', profileRoutes);
 
 profileRoutes.route('/').get(function(req, res) {
-    Todo.find(function(err, profile) {
+    Profile.find(function(err, profile) {
         if (err) {
             console.log(err);
         } else {
@@ -19,7 +21,7 @@ profileRoutes.route('/').get(function(req, res) {
         }
     });
 });
-profileRoutes.route('/:id').get(function(req, res) {
+profileRoutes.route('/update/:id').get(function(req, res) {
     let id = req.params.id;
     Profile.findById(id, function(err, profile) {
         res.json(profile);
@@ -29,11 +31,11 @@ profileRoutes.route('/:id').get(function(req, res) {
 profileRoutes.route('/add').post(function(req, res) {
     let profile = new Profile(req.body);
     profile.save()
-        .then(todo => {
+        .then(profile => {
             res.status(200).json({'profle': 'profile added successfully'});
         })
         .catch(err => {
-            res.status(400).send('adding new todo failed');
+            res.status(400).send('adding new profile failed');
         });
 });
 

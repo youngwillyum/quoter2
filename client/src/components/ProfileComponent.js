@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 import * as yup from "yup"
 import axios from 'axios';
+import PropTypes from 'prop-types';
 
 const MyProfile = props => (
     <tr>
@@ -26,17 +27,6 @@ constructor(props) {
   this.onChangeProfileState = this.onChangeProfileState.bind(this)
   this.onChangeProfileZipcode = this.onChangeProfileZipcode.bind(this)
   this.onSubmit = this.onSubmit.bind(this)
-
-    const newProfile = {
-    profile_fullname: this.profile_fullname,
-    profile_address1: this.profile_address1,
-    profile_address2: this.profile_address2,
-    profile_city: this.profile_city,
-    profile_state: this.profile_state,
-    profile_zipcode: this.profile_zipcode
-  }
-  axios.post('http://localhost:8080/profile', newProfile)
-  .then(res => console.log(res.data));
 
 
 
@@ -118,8 +108,16 @@ onSubmit(e) {
   console.log(this.state.profile_state);
   console.log(this.state.profile_zipcode);
 
+  const newProfile = {
+  profile_fullname: this.state.profile_fullname,
+  profile_address1: this.state.profile_address1,
+  profile_address2: this.state.profile_address2,
+  profile_city: this.state.profile_city,
+  profile_state: this.state.profile_state,
+  profile_zipcode: this.state.profile_zipcode
 
 
+}
   this.setState = ({
     profile_fullname:'',
     profile_address1:'',
@@ -128,9 +126,10 @@ onSubmit(e) {
     profile_state:'',
     profile_zipcode:''
   })
+
+  axios.post('http://localhost:8080/profile/add', newProfile)
+  .then(res => console.log(res.data));
 }
-
-
 
 
 
@@ -143,7 +142,7 @@ render(){
       <form onSubmit={this.onSubmit}>
 
         <div className="form-group">
-          <label>Full Name: {this.state.profile_fullname}</label>
+          <label>Full Name: {profile_fullname}</label>
           <input type="text" className="form-control" maxlength="50" required value={this.state.profile_fullname}
             onChange={this.onChangeProfileName}   />
         </div>
