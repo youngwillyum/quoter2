@@ -3,16 +3,20 @@ const Schema = mongoose.Schema;
 
 let History = new Schema({
     hist_date: {
-        type: String
+        type: String,
+        reqired: true
     },
     hist_gallons_requested: {
-        type: String
+        type: String,
+        reqired: true
     },
     hist_price_per_gallon: {
-        type: String
+        type: String,
+        reqired: false
     },
     hist_total_cost: {
-        type: String
+        type: String,
+        reqired: false
     }
 });
 

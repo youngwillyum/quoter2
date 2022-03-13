@@ -3,22 +3,30 @@ const Schema = mongoose.Schema;
 
 let Profile = new Schema({
   profile_fullname: {
-    type: String
+    type: String,
+    required: true,
+    min:3,
+    max:50
   },
   profile_address1: {
-    type: String
+    type: String,
+    required: true
   },
   profile_address2: {
-    type: String
+    type: String,
+    required: true
   },
   profile_city: {
-    type: String
+    type: String,
+    required: true
   },
   profile_state: {
-    type: String
+    type: String,
+    required: true
   },
   profile_zipcode: {
-    type: String
+    type: String,
+    required: true
   }
 
 });

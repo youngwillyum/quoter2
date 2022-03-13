@@ -7,6 +7,9 @@ const mongoose = require('mongoose');
 const histRoutes = express.Router();
 const PORT = 8080;
 
+let Pricing = require('./pricing.model');
+const pricingModel = require('./pricing.model');
+
 let History = require('./history.model');
 const historyModel = require('./history.model');
 
@@ -15,9 +18,10 @@ const profileModel = require('./profile.model');
 
 app.use(cors());
 app.use(bodyParser.json());
-app.use('/profile', profileRoutes);
-app.use('/historys', histRoutes);
 
+
+
+//Database disabled
 /*mongoose.connect('mongodb://127.0.0.1:27017/historys', { useNewUrlParser: true });
 const connection = mongoose.connection;
 
@@ -34,12 +38,12 @@ profileRoutes.route('/').get(function(req, res) {
         }
     });
 });
-profileRoutes.route('/update/:id').get(function(req, res) {
+/*profileRoutes.route('/update/:id').get(function(req, res) {
     let id = req.params.id;
     Profile.findById(id, function(err, profile) {
         res.json(profile);
     });
-});
+});*/
 
 profileRoutes.route('/add').post(function(req, res) {
     let profile = new Profile(req.body);
@@ -61,7 +65,7 @@ histRoutes.route('/').get(function(req, res) {
         }
     });
 });
-
+/*
 histRoutes.route('/:id').get(function(req, res) {
     let id = req.params.id;
     History.findById(id, function(err, history) {
@@ -87,7 +91,7 @@ histRoutes.route('/update/:id').post(function(req, res) {
             });
     });
 });
-
+*/
 histRoutes.route('/add').post(function(req, res) {
     let history = new History(req.body);
     history.save()
@@ -100,7 +104,7 @@ histRoutes.route('/add').post(function(req, res) {
 });
 
 app.use('/historys', histRoutes);
-
+app.use('/profile', profileRoutes);
 
 app.use('/login', (req, res) => {
   res.send({
