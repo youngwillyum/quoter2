@@ -16,6 +16,9 @@ const historyModel = require('./history.model');
 let Profile = require('./profile.model');
 const profileModel = require('./profile.model');
 
+let Login = require('./login.model');
+const profileModel = require('./login.model');
+
 app.use(cors());
 app.use(bodyParser.json());
 
@@ -103,8 +106,30 @@ histRoutes.route('/add').post(function(req, res) {
         });
 });
 
+loginRoutes.route('/').get(function(req, res) {
+    Login.find(function(err, login) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.json(login);
+        }
+    });
+});
+
+loginRoutes.route('/add').post(function(req, res) {
+    let Login = new Login(req.body);
+    Login.save()
+        .then(history => {
+            res.status(200).json({'login': 'login added successfully'});
+        })
+        .catch(err => {
+            res.status(400).send('adding new login failed');
+        });
+});
+
 app.use('/historys', histRoutes);
 app.use('/profile', profileRoutes);
+app.use('/userLogin',loginRoutes);
 
 app.use('/login', (req, res) => {
   res.send({
