@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Home from './HomeComponent'
 import Profile from './Profile/ProfileComponent'
+import ProfileInfo from './Profile/viewProfile'
 import Quoter from './Quoter/QuoterComponent'
 import History from './Quoter/HistoryComponent'
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -23,6 +24,9 @@ export default class Main extends Component{
                   <Link to="/Profile" className="nav-link">Profile</Link>
                 </li>
                 <li className="navbar-item">
+                  <Link to="/viewProfile" className="nav-link">ViewProfile</Link>
+                </li>
+                <li className="navbar-item">
                   <Link to="/Quoter" className="nav-link">Get Quote</Link>
                 </li>
                 <li className="navbar-item">
@@ -37,6 +41,7 @@ export default class Main extends Component{
           <Route path= '/profile' component={Profile}/>
           <Route path= '/quoter' component={Quoter}/>
           <Route path= '/history' component={History}/>
+          <Route path= '/viewprofile' component={ProfileInfo}/>
         </div>
       </Router>
     );

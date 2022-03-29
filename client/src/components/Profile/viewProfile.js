@@ -13,7 +13,7 @@ const MyProfile = props => (
     </tr>
 )
 
-export default class HistoryList extends Component {
+export default class ProfileInfo extends Component {
 
     constructor(props) {
         super(props);
@@ -34,7 +34,7 @@ profileRead() {
   return this.state.Profile.map(function(currentProfile, i){
       return <MyProfile profile={currentProfile} key={i} />;
   })
-
+}
     render() {
         return (
             <div>
@@ -55,5 +55,6 @@ profileRead() {
                 </tbody>
             </table>
             </div>
+          )
     }
 }
