@@ -20,13 +20,13 @@ export default class ProfileInfo extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {historys: []};
+        this.state = {profile: []};
     }
 
     componentDidMount() {
-        axios.get('http://localhost:8080/historys/')
+        axios.get('http://localhost:8080/profile')
             .then(response => {
-                this.setState({ historys: response.data });
+                this.setState({ profile: response.data });
             })
             .catch(function (error){
                 console.log(error);
@@ -34,7 +34,7 @@ export default class ProfileInfo extends Component {
     }
 
 profileRead() {
-  return this.state.historys.map(function(currentProfile, i){
+  return this.state.profile.map(function(currentProfile, i){
       return <MyProfile profile={currentProfile} key={i} />;
   })
 }
