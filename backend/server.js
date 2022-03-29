@@ -106,7 +106,7 @@ histRoutes.route('/add').post(function(req, res) {
             res.status(400).send('adding new history failed');
         });
 });
-
+// login routes
 loginRoutes.route('/').get(function(req, res) {
     Login.find(function(err, login) {
         if (err) {
