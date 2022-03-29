@@ -30,11 +30,11 @@ connection.once('open', function() {
 })
 
 profileRoutes.route('/').get(function(req, res) {
-    Profile.find(function(err, profile) {
+    Profile.find(function(err, historys) {
         if (err) {
             console.log(err);
         } else {
-            res.json(profile);
+            res.json(historys);
         }
     });
 });
@@ -104,7 +104,7 @@ histRoutes.route('/add').post(function(req, res) {
 });
 
 app.use('/historys', histRoutes);
-app.use('/profile', profileRoutes);
+app.use('/historys', profileRoutes);
 
 app.use('/login', (req, res) => {
   res.send({
