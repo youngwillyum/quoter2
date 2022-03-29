@@ -16,6 +16,9 @@ const historyModel = require('./history.model');
 let Profile = require('./profile.model');
 const profileModel = require('./profile.model');
 
+let userLogin = require('./login.model');
+const userLogin = require('./login.model');
+
 app.use(cors());
 app.use(bodyParser.json());
 
@@ -105,7 +108,7 @@ histRoutes.route('/add').post(function(req, res) {
 
 app.use('/historys', histRoutes);
 app.use('/historys', profileRoutes);
-
+app.use('/userLogin', loginRoutes);
 app.use('/login', (req, res) => {
   res.send({
     token: 'test123'
