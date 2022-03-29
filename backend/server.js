@@ -30,11 +30,11 @@ connection.once('open', function() {
 })
 
 profileRoutes.route('/').get(function(req, res) {
-    Profile.find(function(err, historys) {
+    Profile.find(function(err, profile) {
         if (err) {
             console.log(err);
         } else {
-            res.json(historys);
+            res.json(profile);
         }
     });
 });
@@ -57,11 +57,11 @@ profileRoutes.route('/add').post(function(req, res) {
 });
 
 histRoutes.route('/').get(function(req, res) {
-    History.find(function(err, historys) {
+    History.find(function(err, history) {
         if (err) {
             console.log(err);
         } else {
-            res.json(historys);
+            res.json(history);
         }
     });
 });
@@ -104,7 +104,7 @@ histRoutes.route('/add').post(function(req, res) {
 });
 
 app.use('/historys', histRoutes);
-app.use('/historys', profileRoutes);
+app.use('/profile', profileRoutes);
 
 app.use('/login', (req, res) => {
   res.send({
