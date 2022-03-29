@@ -3,11 +3,11 @@ const Schema = mongoose.Schema;
 
 let Login = new Schema({
     login_email:{
-      type: email,
+      type: String,
       required: true
     },
     login_password:{
-      type: password,
+      type: String,
       required: true
     }
 });

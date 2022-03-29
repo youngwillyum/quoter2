@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const profileRoutes = express.Router();
 const mongoose = require('mongoose');
 const histRoutes = express.Router();
+const loginRoutes = express.Router();
 const PORT = 8080;
 
 let Pricing = require('./pricing.model');
@@ -17,7 +18,7 @@ let Profile = require('./profile.model');
 const profileModel = require('./profile.model');
 
 let Login = require('./login.model');
-const profileModel = require('./login.model');
+const loginModel = require('./login.model');
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -129,7 +130,7 @@ loginRoutes.route('/add').post(function(req, res) {
 
 app.use('/historys', histRoutes);
 app.use('/profile', profileRoutes);
-app.use('/userLogin',loginRoutes);
+app.use('/userLogin', loginRoutes);
 
 app.use('/login', (req, res) => {
   res.send({
