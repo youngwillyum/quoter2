@@ -99,12 +99,6 @@ componentDidMount() {
         })
 }
 
-profileRead() {
-       return this.state.Profile.map(function(currentProfile, i){
-           return <MyProfile profile={currentProfile} key={i} />;
-       })
-   }
-
 onSubmit(e) {
   e.preventDefault();
 
@@ -153,14 +147,18 @@ onSubmit(e) {
   .then(res => console.log(res.data));
 }
 
-
-
+profileRead() {
+  return this.state.Profile.map(function(currentProfile, i){
+      return <MyProfile profile={currentProfile} key={i} />;
+  })
+}
 
 
 render(){
   return(
 
       <React.Fragment>
+
       <form onSubmit={this.onSubmit}>
 
         <div className="form-group">
@@ -257,7 +255,9 @@ render(){
         </div>
 
 </form>
+
 </React.Fragment>
+
 )
 }
 }

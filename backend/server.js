@@ -22,12 +22,12 @@ app.use(bodyParser.json());
 
 
 //Database disabled
-/*mongoose.connect('mongodb://127.0.0.1:27017/historys', { useNewUrlParser: true });
+mongoose.connect('mongodb://127.0.0.1:27017/historys', { useNewUrlParser: true });
 const connection = mongoose.connection;
 
 connection.once('open', function() {
     console.log("MongoDB database connection established successfully");
-})*/
+})
 
 profileRoutes.route('/').get(function(req, res) {
     Profile.find(function(err, profile) {
