@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const profileRoutes = express.Router();
 const mongoose = require('mongoose');
 const histRoutes = express.Router();
+const loginRoutes = express.Router();
 const PORT = 8080;
 
 let Pricing = require('./pricing.model');
@@ -17,7 +18,7 @@ let Profile = require('./profile.model');
 const profileModel = require('./profile.model');
 
 let Login = require('./login.model');
-const profileModel = require('./login.model');
+const loginModel = require('./login.model');
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -105,7 +106,7 @@ histRoutes.route('/add').post(function(req, res) {
             res.status(400).send('adding new history failed');
         });
 });
-
+// login routes
 loginRoutes.route('/').get(function(req, res) {
     Login.find(function(err, login) {
         if (err) {
