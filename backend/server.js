@@ -1,27 +1,30 @@
 const express = require('express');
 const cors = require('cors')
-const app = express();
 const bodyParser = require('body-parser');
-const profileRoutes = express.Router();
 const mongoose = require('mongoose');
+
+const app = express();
+const profileRoutes = express.Router();
 const histRoutes = express.Router();
 const loginRoutes = express.Router();
+
 const PORT = 8080;
 
-let Pricing = require('./pricing.model');
-const pricingModel = require('./pricing.model');
+let Pricing = require('./models/pricing.model');
+const pricingModel = require('./models/pricing.model');
 
-let History = require('./history.model');
-const historyModel = require('./history.model');
+let History = require('./models/history.model');
+const historyModel = require('./models/history.model');
 
-let Profile = require('./profile.model');
-const profileModel = require('./profile.model');
+let Profile = require('./models/profile.model');
+const profileModel = require('./models/profile.model');
 
-let Login = require('./login.model');
-const loginModel = require('./login.model');
+let Login = require('./models/login.model');
+const loginModel = require('./models/login.model');
 
 app.use(cors());
-app.use(bodyParser.json());
+const urlencodedParser = bodyParser.urlencoded({ extended: false })
+app.use(bodyParser.json(), urlencodedParser);
 
 
 
