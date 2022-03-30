@@ -17,13 +17,13 @@ export default class HistoryList extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {historys: []};
+        this.state = {history: []};
     }
 
     componentDidMount() {
-        axios.get('http://localhost:8080/historys')
+        axios.get('http://localhost:8080/history')
             .then(response => {
-                this.setState({ historys: response.data });
+                this.setState({ history: response.data });
             })
             .catch(function (error){
                 console.log(error);
@@ -31,7 +31,7 @@ export default class HistoryList extends Component {
     }
 
     histList() {
-        return this.state.historys.map(function(currentHistory, i){
+        return this.state.history.map(function(currentHistory, i){
             return <History history={currentHistory} key={i} />;
         })
     }

@@ -118,9 +118,9 @@ loginRoutes.route('/').get(function(req, res) {
 });
 
 loginRoutes.route('/add').post(function(req, res) {
-    let Login = new Login(req.body);
-    Login.save()
-        .then(history => {
+    let login = new Login(req.body);
+    login.save()
+        .then(login => {
             res.status(200).json({'login': 'login added successfully'});
         })
         .catch(err => {
@@ -128,7 +128,7 @@ loginRoutes.route('/add').post(function(req, res) {
         });
 });
 
-app.use('/historys', histRoutes);
+app.use('/history', histRoutes);
 app.use('/profile', profileRoutes);
 app.use('/userLogin', loginRoutes);
 
