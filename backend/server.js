@@ -26,7 +26,7 @@ app.use(bodyParser.json());
 
 
 //Database disabled
-mongoose.connect('mongodb://127.0.0.1:27017/historys', { useNewUrlParser: true });
+mongoose.connect('mongodb+srv://sds2022:sds2022@pricingmodule.qpukp.mongodb.net/PricingModule?retryWrites=true&w=majority', { useNewUrlParser: true });
 const connection = mongoose.connection;
 
 connection.once('open', function() {
