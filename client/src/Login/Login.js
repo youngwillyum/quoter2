@@ -38,8 +38,6 @@ export default function Login({ setToken }) {
     encryptedData += cipher.final("hex");
     console.log("Encrypted Message: " + encryptedData);
 
-    const decipher = crypto.createDecipheriv(algorithm, Securitykey, initVector);
-    
     const newLogin = {
       login_email: username,
       login_password: encryptedData
