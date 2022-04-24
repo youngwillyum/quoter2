@@ -3,6 +3,14 @@ import PropTypes from 'prop-types';
 import './Login.css';
 import axios from 'axios';
 
+const crypto = require("crypto");
+const algorithm = "aes-256-cbc";
+const initVector = crypto.randomBytes(16);
+const Securitykey = crypto.randomBytes(32);
+const cipher = crypto.createCipheriv(algorithm, Securitykey, initVector);
+
+
+
 async function loginUser(credentials) {
  return fetch('http://localhost:8080/login', {
    method: 'POST',
@@ -26,9 +34,15 @@ export default function Login({ setToken }) {
       password
     });
 
+    let encryptedData = cipher.update(password, "utf-8", "hex");
+    encryptedData += cipher.final("hex");
+    console.log("Encrypted Message: " + encryptedData);
+
+    const decipher = crypto.createDecipheriv(algorithm, Securitykey, initVector);
+    
     const newLogin = {
       login_email: username,
-      login_password: password
+      login_password: encryptedData
   };
 
     axios.post('http://localhost:8080/userLogin/add', newLogin ) 
