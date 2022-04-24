@@ -39,7 +39,7 @@ onChangeQuoterDeliveryDate(e){
 
 onChangeTotalPrice(e){
   this.setState({
-    quoter_deliverydate: e.target.vaule
+    quoter_totalprice: e.target.vaule
   })
 }
 
@@ -55,13 +55,14 @@ onSubmit(e) {
     const newQuote = {
       hist_date: this.state.quoter_deliverydate,
       hist_gallons_requested: this.state.quoter_gallonsrequested,
-      hist_total_price: this.state.quoter_gallonsrequested * 1.50
+      hist_price_per_gallon: 1.50,
+      hist_total_cost: this.state.quoter_gallonsrequested * 1.50
 
     };
     const totalPrice = this.state.quoter_gallonsrequested * 1.50;
     sessionStorage.setItem('price', totalPrice);
     
-
+   
 
     axios.post('http://localhost:8080/history/add', newQuote) 
       .then(res => console.log(res.data));
