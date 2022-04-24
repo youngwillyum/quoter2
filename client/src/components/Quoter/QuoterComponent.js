@@ -1,18 +1,27 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 import axios from 'axios';
+import {useHistory} from "react-router-dom"
+
+
 
 export default class Quoter extends Component{
 
 constructor(props) {
+
+  const state = {
+    button: 1
+  };
   super(props);
   this.onChangeQuoterGallonsRequested = this.onChangeQuoterGallonsRequested.bind(this)
   this.onChangeQuoterDeliveryDate = this.onChangeQuoterDeliveryDate.bind(this)
+  this.onChangeTotalPrice = this.onChangeTotalPrice.bind(this)
   this.onSubmit = this.onSubmit.bind(this)
 
   this.state={
     quoter_gallonsrequested:'',
-    quoter_deliverydate:''
+    quoter_deliverydate:'',
+    quoter_totalprice:''
   }
 }
 
@@ -28,31 +37,51 @@ onChangeQuoterDeliveryDate(e){
   })
 }
 
+onChangeTotalPrice(e){
+  this.setState({
+    quoter_deliverydate: e.target.vaule
+  })
+}
+
 onSubmit(e) {
   e.preventDefault();
+  if (this.state.button == 1){
+    console.log('--Form Submitted--');
+    console.log(this.state.quoter_gallonsrequested);
+    console.log(this.state.quoter_deliverydate);
+    console.log(this.state.quoter_totalprice);
 
-  console.log('--Form Submitted--');
-  console.log(this.state.quoter_gallonsrequested);
-  console.log(this.state.quoter_deliverydate);
+    this.state.totalPrice = this.state.quoter_gallonsrequested *1.50
+    const newQuote = {
+      hist_date: this.state.quoter_deliverydate,
+      hist_gallons_requested: this.state.quoter_gallonsrequested,
+      hist_total_price: this.state.quoter_gallonsrequested * 1.50
 
-  const newQuote = {
-    hist_date: this.state.quoter_deliverydate,
-    hist_gallons_requested: this.state.quoter_gallonsrequested,
+    };
+    const totalPrice = this.state.quoter_gallonsrequested * 1.50;
+    sessionStorage.setItem('price', totalPrice);
+    
 
-};
 
-axios.post('http://localhost:8080/history/add', newQuote) 
-    .then(res => console.log(res.data));
+    axios.post('http://localhost:8080/history/add', newQuote) 
+      .then(res => console.log(res.data));
 
-  this.setState = ({
-    quoter_gallonsrequested:'',
-    quoter_deliverydate:''
-  })
+    this.setState = ({
+      quoter_gallonsrequested:'',
+      quoter_deliverydate:'',
+      quoter_totalprice:''
+    })
+  }
+  if (this.state.button == 2 ){
+   this.props.history.push('/history');
+  }
 }
 
 componentDidMount(){
   const ad1 = sessionStorage.getItem('ad1');
-  this.setState({ad1});
+  const state = sessionStorage.getItem('state');
+  const price = sessionStorage.getItem('price');
+  this.setState({ad1, state, price});
 
 }
 
@@ -79,15 +108,30 @@ render(){
       </div>
 
       <div className="form-group">
-        <label>Suggested price / gallon: $2</label>
+        <label>Price per gallon: $1.50</label>
       </div>
 
       <div className="form-group">
-        <label>Total amount due:</label>
+        <label>Total amount due: {this.state.price}</label>
       </div>
 
       <div className="form-group">
-        <input type="submit" value="Generate!" className = "btn btn-primary"/>
+      <button
+        onClick={() => (this.state.button = 1)}
+        type="submit"
+        name="btn1"
+        value="Get Quote!"
+      >
+        Get Quote!
+      </button>
+      <button
+        onClick={() => (this.state.button = 2)}
+        type="submit"
+        name="btn2"
+        value="Submit"
+      >
+        Submit
+      </button>
       </div>
 
 
