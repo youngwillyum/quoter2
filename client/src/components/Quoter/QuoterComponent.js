@@ -50,13 +50,40 @@ onSubmit(e) {
     console.log(this.state.quoter_gallonsrequested);
     console.log(this.state.quoter_deliverydate);
     console.log(this.state.quoter_totalprice);
-
-    this.state.totalPrice = this.state.quoter_gallonsrequested *1.50
+    if (this.state.state == 'TX'){
+      if (this.state.price != null){
+        if (this.state.quoter_gallonsrequested > 1000){
+          this.state.totalPrice = this.state.quoter_gallonsrequested * (1.50 + (1.50 * (.02 - .01 +.02 +.1)))
+        } else {
+          this.state.totalPrice = this.state.quoter_gallonsrequested * (1.50 + (1.50 * (.02 - .01 +.03 +.1)))
+        }
+      } else {
+        if (this.state.quoter_gallonsrequested > 1000){
+          this.state.totalPrice = this.state.quoter_gallonsrequested * (1.50 + (1.50 * (.02+.02+.1)))
+        } else {
+          this.state.totalPrice = this.state.quoter_gallonsrequested * (1.50 + (1.50 * (.02+.03+.1)))
+        }
+      }
+    } else {
+      if (this.state.price != null){
+        if (this.state.quoter_gallonsrequested > 1000){
+        this.state.totalPrice = this.state.quoter_gallonsrequested * (1.50 + (1.50 * (.04 - .01 +.02 +.1)))
+        } else {
+        this.state.totalPrice = this.state.quoter_gallonsrequested * (1.50 + (1.50 * (.04 - .01 +.03 +.1)))
+        }
+      } else {
+        if (this.state.quoter_gallonsrequested > 1000){
+        this.state.totalPrice = this.state.quoter_gallonsrequested * (1.50 + (1.50 * (.04 + .02 +.1)))
+        } else {
+        this.state.totalPrice = this.state.quoter_gallonsrequested * (1.50 + (1.50 * (.04 + .03 +.1)))
+        }
+      }
+    }
     const newQuote = {
       hist_date: this.state.quoter_deliverydate,
       hist_gallons_requested: this.state.quoter_gallonsrequested,
       hist_price_per_gallon: 1.50,
-      hist_total_cost: this.state.quoter_gallonsrequested * 1.50
+      hist_total_cost: this.state.totalPrice
 
     };
     const totalPrice = this.state.quoter_gallonsrequested * 1.50;
@@ -74,6 +101,7 @@ onSubmit(e) {
     })
   }
   if (this.state.button == 2 ){
+    if (this.state.totalPrice !=null )
    this.props.history.push('/history');
   }
 }
@@ -125,6 +153,13 @@ render(){
       >
         Get Quote!
       </button>
+      
+      </div>
+
+
+    </form>
+    <form onSubmit ={this.onSubmit}>
+      <div className="form-group">
       <button
         onClick={() => (this.state.button = 2)}
         type="submit"
@@ -134,8 +169,6 @@ render(){
         Submit
       </button>
       </div>
-
-
     </form>
     </React.Fragment>
 )
