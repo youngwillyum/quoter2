@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 import axios from 'axios';
 import {useHistory} from "react-router-dom"
+import './Quoter.css';
 
 
 
@@ -39,7 +40,7 @@ onChangeQuoterDeliveryDate(e){
 
 onChangeTotalPrice(e){
   this.setState({
-    quoter_deliverydate: e.target.vaule
+    quoter_totalprice: e.target.vaule
   })
 }
 
@@ -50,18 +51,46 @@ onSubmit(e) {
     console.log(this.state.quoter_gallonsrequested);
     console.log(this.state.quoter_deliverydate);
     console.log(this.state.quoter_totalprice);
-
-    this.state.totalPrice = this.state.quoter_gallonsrequested *1.50
+    if (this.state.state == 'TX'){
+      if (this.state.price != null){
+        if (this.state.quoter_gallonsrequested > 1000){
+          this.state.totalPrice = this.state.quoter_gallonsrequested * (1.50 + (1.50 * (.02 - .01 +.02 +.1)))
+        } else {
+          this.state.totalPrice = this.state.quoter_gallonsrequested * (1.50 + (1.50 * (.02 - .01 +.03 +.1)))
+        }
+      } else {
+        if (this.state.quoter_gallonsrequested > 1000){
+          this.state.totalPrice = this.state.quoter_gallonsrequested * (1.50 + (1.50 * (.02+.02+.1)))
+        } else {
+          this.state.totalPrice = this.state.quoter_gallonsrequested * (1.50 + (1.50 * (.02+.03+.1)))
+        }
+      }
+    } else {
+      if (this.state.price != null){
+        if (this.state.quoter_gallonsrequested > 1000){
+        this.state.totalPrice = this.state.quoter_gallonsrequested * (1.50 + (1.50 * (.04 - .01 +.02 +.1)))
+        } else {
+        this.state.totalPrice = this.state.quoter_gallonsrequested * (1.50 + (1.50 * (.04 - .01 +.03 +.1)))
+        }
+      } else {
+        if (this.state.quoter_gallonsrequested > 1000){
+        this.state.totalPrice = this.state.quoter_gallonsrequested * (1.50 + (1.50 * (.04 + .02 +.1)))
+        } else {
+        this.state.totalPrice = this.state.quoter_gallonsrequested * (1.50 + (1.50 * (.04 + .03 +.1)))
+        }
+      }
+    }
     const newQuote = {
       hist_date: this.state.quoter_deliverydate,
       hist_gallons_requested: this.state.quoter_gallonsrequested,
-      hist_total_price: this.state.quoter_gallonsrequested * 1.50
+      hist_price_per_gallon: 1.50,
+      hist_total_cost: this.state.totalPrice
 
     };
     const totalPrice = this.state.quoter_gallonsrequested * 1.50;
     sessionStorage.setItem('price', totalPrice);
     
-
+   
 
     axios.post('http://localhost:8080/history/add', newQuote) 
       .then(res => console.log(res.data));
@@ -73,6 +102,7 @@ onSubmit(e) {
     })
   }
   if (this.state.button == 2 ){
+    if (this.state.totalPrice !=null )
    this.props.history.push('/history');
   }
 }
@@ -103,20 +133,22 @@ render(){
           value={this.state.quoter_deliverydate} onChange={this.onChangeQuoterDeliveryDate}/>
       </div>
 
-      <div className="form-group">
-        <label>Delivery address: {this.state.ad1}</label>
+      <div className = "filled-values">
+        <div className="form-group">
+          <label>Delivery address: {this.state.ad1}</label>
+        </div>
+
+        <div className="form-group">
+          <label>Price per gallon: $1.50</label>
+        </div>
+
+        <div className="form-group">
+          <label>Total amount due: {this.state.price}</label>
+        </div>
       </div>
 
       <div className="form-group">
-        <label>Price per gallon: $1.50</label>
-      </div>
-
-      <div className="form-group">
-        <label>Total amount due: {this.state.price}</label>
-      </div>
-
-      <div className="form-group">
-      <button
+      <button class = "button"
         onClick={() => (this.state.button = 1)}
         type="submit"
         name="btn1"
@@ -124,7 +156,14 @@ render(){
       >
         Get Quote!
       </button>
-      <button
+      
+      </div>
+
+
+    </form>
+    <form onSubmit ={this.onSubmit}>
+      <div className="form-group">
+      <button class = "button"
         onClick={() => (this.state.button = 2)}
         type="submit"
         name="btn2"
@@ -133,8 +172,6 @@ render(){
         Submit
       </button>
       </div>
-
-
     </form>
     </React.Fragment>
 )
