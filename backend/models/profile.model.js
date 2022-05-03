@@ -25,13 +25,13 @@ let Profile = new Schema({
     type: String,
     required: true,
     min:3,
-    max:50
+    max:30
   },
   profile_zipcode: {
     type: String,
     required: true,
-    min:3,
-    max:9
+    min:5,
+    max:5
   }
 
 });
