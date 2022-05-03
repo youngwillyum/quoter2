@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 import axios from 'axios';
 import {useHistory} from "react-router-dom"
+import './Quoter.css';
 
 
 
@@ -136,20 +137,22 @@ render(){
           value={this.state.quoter_deliverydate} onChange={this.onChangeQuoterDeliveryDate}/>
       </div>
 
-      <div className="form-group">
-        <label>Delivery address: {this.state.ad1}</label>
+      <div className = "filled-values">
+        <div className="form-group">
+          <label>Delivery address: {this.state.ad1}</label>
+        </div>
+
+        <div className="form-group">
+          <label>Price per gallon: $1.50</label>
+        </div>
+
+        <div className="form-group">
+          <label>Total amount due: {this.state.price}</label>
+        </div>
       </div>
 
       <div className="form-group">
-        <label>Price per gallon: $1.50</label>
-      </div>
-
-      <div className="form-group">
-        <label>Total amount due: {this.state.price}</label>
-      </div>
-
-      <div className="form-group">
-      <button
+      <button class = "button"
         onClick={() => (this.state.button = 1)}
         type="submit"
         name="btn1"
@@ -164,7 +167,7 @@ render(){
     </form>
     <form onSubmit ={this.onSubmit}>
       <div className="form-group">
-      <button
+      <button class = "button"
         onClick={() => (this.state.button = 2)}
         type="submit"
         name="btn2"

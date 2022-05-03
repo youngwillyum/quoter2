@@ -6,6 +6,7 @@ const History = props => (
     <tr>
         <td>{props.history.hist_date}</td>
         <td>{props.history.hist_gallons_requested}</td>
+        <td>{props.history.hist_price_per_gallon}</td>
         <td>{props.history.hist_total_cost}</td>
         <td>
             <Link to={"/edit/"+props.history._id}>Edit</Link>
@@ -45,6 +46,7 @@ export default class HistoryList extends Component {
                         <tr>
                             <th>Date</th>
                             <th>Gallons Requested</th>
+                            <th>Price Per Gallon</th>
                             <th>Total Cost</th>
                         </tr>
                     </thead>

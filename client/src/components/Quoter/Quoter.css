@@ -1,0 +1,18 @@
+.filled-values {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.button {
+    font-size: medium;
+    background-color: #04AA6D;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: none;
+    color: white;
+    text-align: center;
+    padding: 14px;
+    margin: 4px 2px;
+    border-radius: 5px;
+    width: 100%;
+}
