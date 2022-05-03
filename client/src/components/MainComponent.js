@@ -24,9 +24,6 @@ export default class Main extends Component{
                   <Link to="/Profile" className="nav-link">Profile</Link>
                 </li>
                 <li className="navbar-item">
-                  <Link to="/viewProfile" className="nav-link">ViewProfile</Link>
-                </li>
-                <li className="navbar-item">
                   <Link to="/Quoter" className="nav-link">Get Quote</Link>
                 </li>
 
