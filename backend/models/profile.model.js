@@ -31,7 +31,7 @@ let Profile = new Schema({
     type: String,
     required: true,
     min:3,
-    max:50
+    max:9
   }
 
 });

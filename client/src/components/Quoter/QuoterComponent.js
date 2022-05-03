@@ -50,6 +50,10 @@ onSubmit(e) {
     console.log(this.state.quoter_gallonsrequested);
     console.log(this.state.quoter_deliverydate);
     console.log(this.state.quoter_totalprice);
+    if (this.state.quoter_gallonsrequested < 0)
+    {
+      this.state.quoter_gallonsrequested = this.state.quoter_gallonsrequested * -1; 
+    }
     if (this.state.state == 'TX'){
       if (this.state.price != null){
         if (this.state.quoter_gallonsrequested > 1000){
