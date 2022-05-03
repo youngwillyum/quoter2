@@ -29,9 +29,6 @@ export default class Main extends Component{
                 <li className="navbar-item">
                   <Link to="/Quoter" className="nav-link">Get Quote</Link>
                 </li>
-                <li className="navbar-item">
-                  <Link to="/History" className="nav-link">History</Link>
-                </li>
 
               </ul>
             </div>

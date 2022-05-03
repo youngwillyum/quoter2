@@ -106,7 +106,7 @@ onSubmit(e) {
     })
   }
   if (this.state.button == 2 ){
-    if (this.state.totalPrice !=null )
+    if (this.state.totalPrice !=null && this.state.state !=null)
    this.props.history.push('/history');
   }
 }
