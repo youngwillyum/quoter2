@@ -250,7 +250,7 @@ render(){
         <div className="form-group">
           <label>Zipcode: {this.state.zip} </label>
           <input type="text" className="form-control" value={this.state.profile_zipcode}
-            onChange={this.onChangeProfileZipcode} maxlength="9" minlength="5" required/>
+            onChange={this.onChangeProfileZipcode} maxlength="5" minlength="5" required/>
         </div>
 
         <div className="form-group">
