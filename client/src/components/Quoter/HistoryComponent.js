@@ -8,9 +8,6 @@ const History = props => (
         <td>{props.history.hist_gallons_requested}</td>
         <td>{props.history.hist_price_per_gallon}</td>
         <td>{props.history.hist_total_cost}</td>
-        <td>
-            <Link to={"/edit/"+props.history._id}>Edit</Link>
-        </td>
     </tr>
 )
 
